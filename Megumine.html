@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home Screen</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #000;
+      background-image: radial-gradient(rgb(38, 63, 207) 1px, transparent 1px),
+                        radial-gradient(white 1px, transparent 1px);
+      background-size: 40px 40px;
+      background-position: 0 0, 20px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+    }
+
+    img {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #90e0ef;
+      margin-bottom: 40px;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 200px;
+    }
+
+    .button-container a {
+      text-decoration: none;
+    }
+
+    .nav-button {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background-color: #0077b6;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color 0.2s;
+    }
+
+    .nav-button:hover {
+      background-color: #00b4d8;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="Mataku.png" alt="Megumine" />
+
+  <h1>Megumine</h1>
+
+  <div class="button-container">
+    <a href="about.html"><div class="nav-button">Profil</div></a>
+    <a href="services.html"><div class="nav-button">Layanan</div></a>
+    <a href="contact.html"><div class="nav-button">Kontak</div></a>
+    <a href="settings.html"><div class="nav-button">Pengaturan</div></a>
+  </div>
+
+</body>
+</html>
