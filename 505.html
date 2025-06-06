@@ -15,39 +15,42 @@
       position: absolute;
       top: 0;
       left: 0;
+      z-index: 2;
     }
 
     #city {
       position: absolute;
       bottom: 0;
       width: 100%;
-      height: 200px;
-      background: repeating-linear-gradient(
-        to right,
-        #023e8a 0 40px,
-        #000 40px 60px
-      );
+      height: 250px;
+      background: transparent;
+      z-index: 1;
+      pointer-events: none;
     }
 
     .building {
       position: absolute;
       bottom: 0;
-      background-color: #023e8a;
+      background-color: rgba(2, 62, 138, 0.5); /* Biru semi-transparan */
       width: 60px;
     }
 
     .window {
       width: 6px;
       height: 6px;
-      background-color: yellow;
+      background-color: rgba(255, 255, 0, 0.7); /* Kuning agak transparan */
       position: absolute;
+    }
+
+    audio {
+      display: none;
     }
   </style>
 </head>
 <body>
   <canvas id="rain"></canvas>
 
-  <!-- Static cityscape -->
+  <!-- Background City -->
   <div id="city"></div>
 
   <!-- Audio autoplay -->
@@ -57,6 +60,7 @@
   </audio>
 
   <script>
+    // Canvas rain
     const canvas = document.getElementById('rain');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -101,7 +105,7 @@
       canvas.height = window.innerHeight;
     });
 
-    // Generate buildings with yellow windows
+    // Generate transparent buildings with yellowish windows
     const city = document.getElementById('city');
     const numBuildings = Math.floor(window.innerWidth / 70);
 
@@ -112,8 +116,7 @@
       building.style.height = `${height}px`;
       building.style.left = `${i * 70}px`;
 
-      // Tambahkan jendela
-      const numWindows = Math.floor(Math.random() * 10) + 5;
+      const numWindows = Math.floor(Math.random() * 8) + 3;
       for (let j = 0; j < numWindows; j++) {
         const windowDiv = document.createElement('div');
         windowDiv.classList.add('window');
