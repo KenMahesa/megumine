@@ -12,11 +12,43 @@
 
     canvas {
       display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    #city {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 200px;
+      background: repeating-linear-gradient(
+        to right,
+        #023e8a 0 40px,
+        #000 40px 60px
+      );
+    }
+
+    .building {
+      position: absolute;
+      bottom: 0;
+      background-color: #023e8a;
+      width: 60px;
+    }
+
+    .window {
+      width: 6px;
+      height: 6px;
+      background-color: yellow;
+      position: absolute;
     }
   </style>
 </head>
 <body>
   <canvas id="rain"></canvas>
+
+  <!-- Static cityscape -->
+  <div id="city"></div>
 
   <!-- Audio autoplay -->
   <audio autoplay loop>
@@ -68,6 +100,30 @@
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     });
+
+    // Generate buildings with yellow windows
+    const city = document.getElementById('city');
+    const numBuildings = Math.floor(window.innerWidth / 70);
+
+    for (let i = 0; i < numBuildings; i++) {
+      const building = document.createElement('div');
+      const height = Math.random() * 100 + 100;
+      building.classList.add('building');
+      building.style.height = `${height}px`;
+      building.style.left = `${i * 70}px`;
+
+      // Tambahkan jendela
+      const numWindows = Math.floor(Math.random() * 10) + 5;
+      for (let j = 0; j < numWindows; j++) {
+        const windowDiv = document.createElement('div');
+        windowDiv.classList.add('window');
+        windowDiv.style.left = `${Math.random() * 50 + 5}px`;
+        windowDiv.style.bottom = `${Math.random() * (height - 10)}px`;
+        building.appendChild(windowDiv);
+      }
+
+      city.appendChild(building);
+    }
   </script>
 </body>
 </html>
